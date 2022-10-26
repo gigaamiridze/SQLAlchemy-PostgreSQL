@@ -1,8 +1,10 @@
 from flask import Flask, Markup
 from .extensions import db, migrate
+from .config import Config
 
 def create_app():
     app = Flask(__name__)
+    app.config.from_object(Config)
     register_extensions(app)
 
     @app.route("/")
